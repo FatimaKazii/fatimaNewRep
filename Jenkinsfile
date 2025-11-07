@@ -10,6 +10,8 @@ pipeline {
         
         stage('Test') {
             steps {
+                sh 'terraform init'
+                echo 'Terraform init completed successfully!'
                 script {
                     echo 'Starting formatting check...'
                     def formatCheck = sh(script: 'terraform fmt -check', returnStatus: true)
@@ -37,8 +39,6 @@ pipeline {
         
         stage('Build') {
             steps {
-                sh 'terraform init'
-                echo 'Terraform init completed successfully!'
                 
                 sh 'terraform plan'
                 echo 'Terraform plan completed successfully!'
