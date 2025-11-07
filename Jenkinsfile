@@ -1,7 +1,7 @@
 pipeline {
     agent any
     
-    stages {
+    stages {        
         
         stage('Test') {
             steps {
@@ -37,6 +37,12 @@ pipeline {
                 
                 sh 'terraform plan'
                 echo 'Terraform plan completed successfully!'
+            }
+        }
+        
+         stage('Manual Approval') {
+            steps {
+                input message: 'Do you want to deploy the infrastructure?', ok: 'Deploy'
             }
         }
         
