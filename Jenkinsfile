@@ -2,11 +2,6 @@ pipeline {
     agent any
     
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/FatimaKazii/fatimaNewRep.git'
-            }
-        }
         
         stage('Test') {
             steps {
